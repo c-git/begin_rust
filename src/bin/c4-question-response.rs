@@ -1,22 +1,14 @@
-use std::io;
+use std::error::Error;
+
+use begin_rust::user_input::{get_number_w_prompt, get_string_w_prompt};
 
 fn can_drive(age: i32) -> bool {
     age >= 16
 }
 
-fn main() -> io::Result<()> {
-    println!("Please enter your name");
-    let mut name = String::new();
-    io::stdin().read_line(&mut name)?;
-    name = name.trim().to_string();
-
-    println!("How old are you?");
-    let mut age = String::new();
-    io::stdin().read_line(&mut age)?;
-    let age: i32 = age
-        .trim()
-        .parse()
-        .expect("Error converting age to a number");
+fn main() -> Result<(), Box<dyn Error>> {
+    let name = get_string_w_prompt("Please enter your name: ")?;
+    let age = get_number_w_prompt("How old are you? ")?;
     let drive = if can_drive(age) {
         "can drive"
     } else {
