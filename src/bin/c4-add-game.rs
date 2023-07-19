@@ -10,9 +10,9 @@ fn main() -> Result<(), Box<dyn Error>> {
     let user_answer = get_number_w_prompt(&format!("{first_number} + {second_number} = "))?;
 
     if user_answer == correct_answer {
-        println!("You are correct!")
+        println!("You're correct!")
     } else {
-        println!("You are wrong. The correct answer was {correct_answer}")
+        println!("You're wrong. The correct answer was {correct_answer}")
     }
 
     Ok(())
